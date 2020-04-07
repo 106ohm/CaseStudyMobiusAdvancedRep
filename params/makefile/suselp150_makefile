@@ -1,0 +1,27 @@
+# This Makefile is used to define the user defined variables local to each project.
+# Use different file for each os or release of the os for wich different values of flags are required.
+
+# Define each variable with the cpp flags values required for the corresponding library,
+# then set the final flag variables (OCFLAGS_PROJ and LINK_FLAGS_PROJ) with the defined library variables.
+# Do not change the name of the variables defined for each different library, being they used also in the makefile of the corresponding libraries
+
+# suse paths
+# LOCALLIBDIR=/usr/local/lib64
+
+# common libs
+COMMON_INCLUDE= -v -fPIC
+COMMON_LIB= 
+
+# ubu state
+STATE_INCLUDE= 
+STATE_LIB= 
+
+
+# suse paradiseo
+CTRL_INCLUDE= 
+CTRL_LIB=
+
+# suse compiler flags
+OCFLAGS_PROJ= $(CTRL_INCLUDE) $(COMMON_INCLUDE)
+# suse linker flags
+LINK_FLAGS_PROJ= $(CTRL_LIB) $(COMMON_LIB)

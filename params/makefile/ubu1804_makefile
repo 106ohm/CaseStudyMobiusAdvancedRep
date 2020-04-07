@@ -1,0 +1,42 @@
+# This Makefile is used to define the user defined variables local to each project.
+# Use different file for each os or release of the os for wich different values of flags are required.
+
+# Define each variable with the cpp flags values required for the corresponding library,
+# then set the final flag variables (OCFLAGS_PROJ and LINK_FLAGS_PROJ) with the defined library variables.
+# Do not change the name of the variables defined for each different library, being they used also in the makefile of the corresponding libraries
+
+# ubu paths
+LOCALLIBDIR=/usr/local/lib
+
+# common to libs
+#COMMON_INCLUDE= -v -I/usr/lib/gcc/x86_64-linux-gnu/6/include
+COMMON_INCLUDE= -v -fPIC 
+#COMMON_LIB= -L/usr/lib/gcc/x86_64-linux-gnu/6
+COMMON_LIB= 
+# 
+# clang-3.4:
+# [ https://askubuntu.com/questions/523613/upgrade-to-gcc-4-9-broke-clang ]
+# [ https://stackoverflow.com/questions/18459894/clang-stdlib-libc-leads-to-undefined-reference ]
+# flag -stdlib=libc++
+# is required by clang++ to avoid following error: 
+# /usr/bin/../lib/gcc/x86_64-linux-gnu/6/../../../../include/c++/4.9/cstddef:51:11: error: no member named
+# 'max_align_t' in the global namespace
+#  using ::max_align_t;
+# but octave libs are compiled against libstdc++, 
+# thus clang++ fails with error: "undefined reference to" octave libs
+# 
+# To fix this error, remove clang-3.9 and install clang-3.9
+#
+# clang-3.9, Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/8
+#    tested
+#
+override linux_CC=/usr/bin/clang++
+
+# ubu darep (depends on mobius install dir)
+DAREP_INCLUDE=-I$(MOBIUSROOT) 
+DAREP_LIB= 
+
+# ubu compiler flags
+OCFLAGS_PROJ= -DDAREP -DSANFUNC
+# ubu linker flags
+LINK_FLAGS_PROJ= 

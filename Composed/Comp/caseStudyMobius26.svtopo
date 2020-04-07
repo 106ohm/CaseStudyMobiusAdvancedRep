@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- macros -->
+<stateVariableTopology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <name>Template</name>
+  <numberOfDependencyAwareSVs>1</numberOfDependencyAwareSVs>
+  <numberOfReplicas>2</numberOfReplicas>
+  <topology>
+    <dependencyAwareSVs>
+      <dependencyAwareSV type="Place">NF</dependencyAwareSV>
+    </dependencyAwareSVs>
+       <dependencies replicaNumber="0">
+	   <dependency pos="0">0</dependency>
+	   <dependency pos="1">1</dependency>
+       </dependencies>
+       <dependencies replicaNumber="1">
+	   <dependency pos="0">1</dependency>
+	   <dependency pos="1">0</dependency>
+       </dependencies>
+  </topology>
+</stateVariableTopology>
